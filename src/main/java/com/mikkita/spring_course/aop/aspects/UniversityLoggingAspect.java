@@ -2,9 +2,7 @@ package com.mikkita.spring_course.aop.aspects;
 
 import com.mikkita.spring_course.aop.Student;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,7 +10,7 @@ import java.util.List;
 @Component
 @Aspect
 public class UniversityLoggingAspect {
-
+    /*
     @Before("execution(* getStudents())")
     public void beforeGetStudentsLoggingAdvice(){
         System.out.println("beforeGetStudentsLoggingAdvice: "+
@@ -20,6 +18,9 @@ public class UniversityLoggingAspect {
                 " методом getStudents");
     }
 
+    */
+
+    /*
     @AfterReturning(pointcut = "execution(* getStudents())",
     returning = "students")
     public void afterReturningGetStudentsLoggingAdvice(JoinPoint joinPoint,List<Student> students){
@@ -38,4 +39,22 @@ public class UniversityLoggingAspect {
                 "логируем получение списка студентов после" +
                 " работы методоа getStudents");
     }
+
+    */
+/*
+    @AfterThrowing(pointcut = "execution(* getStudents())"
+    , throwing = "exception")
+    public void afterThrowingGetStudentsLoggingAdvice(Throwable exception){
+        System.out.println("afterThrowingGetStudentsLoggingAdvice: логируем выборос " +
+                "исключения "+ exception);
+    }
+*/
+
+    @After("execution(* getStudents())")
+    public void afterGetStudentsLoggingAdvice(){
+        System.out.println("afterGetStudentsLoggingAdvice:" +
+                " логируем нормальное окончание работы" +
+                " метода или выброс исключения");
+    }
+
 }
