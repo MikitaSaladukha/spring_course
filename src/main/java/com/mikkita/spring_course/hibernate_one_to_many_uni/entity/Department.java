@@ -1,4 +1,4 @@
-package com.mikkita.spring_course.hibernate_one_to_many_bi.entity;
+package com.mikkita.spring_course.hibernate_one_to_many_uni.entity;
 
 import jakarta.persistence.*;
 
@@ -23,9 +23,8 @@ public class Department {
     @Column(name = "min_salary")
     private int minSalary;
 
-    @OneToMany(cascade = {CascadeType.ALL}
-            , mappedBy = "department"
-            , fetch = FetchType.LAZY)
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name="department_id")
     private List<Employee> emps;
 
     public Department() {
@@ -42,7 +41,6 @@ public class Department {
             emps=new ArrayList<>(0);
         }
         emps.add(employee);
-        employee.setDepartment(this);
 
     }
 
